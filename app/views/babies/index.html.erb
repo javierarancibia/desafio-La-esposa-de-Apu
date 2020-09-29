@@ -3,7 +3,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Los Octillizos de la familia Nahasapeemapetilon</h1>
-<table>
+
+<%
+=begin%>
+ <table>
     <thead>
         <tr>
             <th>Nombre del bebe</th>
@@ -11,7 +14,6 @@
         </tr>
     </thead>
     <tbody>
-        <% @babies.each do |baby| %>
             <tr>
                 <td><%= baby.name %></td>
                 <td><%= image_tag baby.image %></td>
@@ -19,5 +21,19 @@
             </tr>
         <% end %>
     </tbody>
-</table>
+</table> 
+<%
+=end%>
 
+
+<div class="card-deck">
+        <% @babies.each do |baby| %>
+  <div class="card">
+    <img ><td><%= image_tag baby.image %></td>
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5><td><%= baby.name %></td>
+      <p class="card-text"><small class="text-muted"></small></p><td><%= link_to  "Mostrar", baby_breastfeedings_path(baby.id) %></td>
+    </div>
+  </div>
+  <% end %>
+</div>
