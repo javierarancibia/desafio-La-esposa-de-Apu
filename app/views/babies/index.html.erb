@@ -1,0 +1,22 @@
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Los Octillizos de la familia Nahasapeemapetilon</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre del bebe</th>
+            <th colspan="3"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @babies.each do |baby| %>
+            <tr>
+                <td><%= baby.name %></td>
+                <td><%= link_to  "Mostrar", baby_breastfeedings_path(baby.id) %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+

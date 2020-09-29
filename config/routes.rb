@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :babies do
     resources :breastfeedings
   end
+  
+
+  root to: 'babies#index'
 end
 
 
