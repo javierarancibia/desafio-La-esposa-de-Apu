@@ -1,10 +1,10 @@
-<%= form_with(model: [@baby, breastfeeding], local: true) do |form| %>
-  <% if @breastfeeding.errors.any? %>
+<%= form_with(model: breastfeeding, local: true) do |form| %>
+  <% if breastfeeding.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@breastfeeding.errors.count, "error") %>No se pudo guardar tu sesion de breastfeeding</h2>
+      <h2><%= pluralize(breastfeeding.errors.count, "error") %>No se pudo guardar tu sesion de breastfeeding</h2>
 
       <ul>
-      <% @breastfeeding.errors.full_messages.each do |message| %>
+      <% breastfeeding.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -18,17 +18,17 @@
 
   <div class="field">
     <%= form.label :cantidad %>
-    <%= form.number_field :content %>
+    <%= form.number_field :quantity %>
   </div>
 
   <div class="field">
     <%= form.label :duracion %>
-    <%= form.number_field :image_url %>
+    <%= form.number_field :length %>
   </div>
 
   <div class="field">
     <%= form.label :id_del_bebe %>
-    <%= form.number_field :baby_id %>
+    <%= form.select :baby_id, @babies.map{ |baby| [baby.name, baby.id] }, prompt: "Seleccione a un bebe.." %>
   </div>
 
   <div class="actions">
