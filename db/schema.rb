@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_29_022845) do
   end
 
   create_table "breastfeedings", force: :cascade do |t|
-    t.datetime "datetime"
+    t.date "date"
     t.integer "quantity"
     t.integer "length"
     t.integer "baby_id"

@@ -1,0 +1,37 @@
+<%= form_with(model: [@baby, breastfeeding], local: true) do |form| %>
+  <% if @breastfeeding.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@breastfeeding.errors.count, "error") %>No se pudo guardar tu sesion de breastfeeding</h2>
+
+      <ul>
+      <% @breastfeeding.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :fecha %>
+    <%= form.date_field :date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cantidad %>
+    <%= form.number_field :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :duracion %>
+    <%= form.number_field :image_url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :id_del_bebe %>
+    <%= form.number_field :baby_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 class CreateBreastfeedings < ActiveRecord::Migration[5.2]
   def change
     create_table :breastfeedings do |t|
-      t.timestamp :datetime
+      t.date :date
       t.integer :quantity
       t.integer :length
       t.references :baby, foreign_key: true
