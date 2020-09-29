@@ -1,7 +1,9 @@
 class BreastfeedingsController < ApplicationController
 
     def index
-        @breastfeedings = Breastfeeding.all
+        @baby = Baby.find params[:baby_id]
+
+        @breastfeedings = @baby.breastfeedings
     end
 
     def new

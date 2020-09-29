@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1>Breastfeedings</h1>
 <table>
     <thead>
@@ -16,7 +18,10 @@
                 <td><%= breastfeeding.baby %></td>
                 <td><%= breastfeeding.quantity %></td>
                 <td><%= breastfeeding.length %></td>
-                <td>*<%= link_to  "Mostrar", breastfeeding %></td>
+                <td><%= breastfeeding.baby %></td>
+                <td><%= link_to  "Mostrar", baby_breastfeeding_path(@baby, breastfeeding) %></td>
+                <td><%= link_to  "Editar", edit_baby_breastfeeding_path(@baby, breastfeeding) %></td>
+                <td><%= link_to  "Nuevo", new_baby_breastfeeding_path(@baby) %></td>
             </tr>
         <% end %>
     </tbody>
