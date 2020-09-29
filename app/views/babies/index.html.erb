@@ -14,6 +14,7 @@
         <% @babies.each do |baby| %>
             <tr>
                 <td><%= baby.name %></td>
+                <td><%= image_tag baby.image %></td>
                 <td><%= link_to  "Mostrar", baby_breastfeedings_path(baby.id) %></td>
             </tr>
         <% end %>
