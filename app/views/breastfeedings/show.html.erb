@@ -1,4 +1,7 @@
 
+  <p id="notice"><%= notice %></p>
+  
+  
   <strong>Fecha:</strong>
   <%= @breastfeeding.date %>
 </p>
@@ -14,6 +17,9 @@
 </p>
 
 <p>
-  <strong>Id del bebe:</strong>
+  <strong>Nombre del bebe:</strong>
   <%= @breastfeeding.baby %>
 </p>
+
+<%= link_to  "Editar", edit_baby_breastfeeding_path(@baby, @breastfeeding) %>
+<%= link_to  "Atras", baby_breastfeeding_path(@baby) %>
