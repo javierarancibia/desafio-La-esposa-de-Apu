@@ -1,27 +1,50 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Breastfeedings</h1>
-<table>
-    <thead>
+
+
+<div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="jumbotron">
+                <h1 class="display-4">Archivo de Alimentacion</h1><td><h2><%= @baby.name %></td></h2><td><%= image_tag @baby.image %></td>
+                <hr class="my-4">
+                <p>Catastro de alimentacion de cada niño</p>
+                <%= link_to  "Nuevo", new_baby_breastfeeding_path(@baby) %><br>
+                <%= link_to  "Index de los bebes", babies_path %>
+            </div>
+        </div>
+    </div>
+</div>
+            
+
+
+
+
+
+
+    
+
+
+
+<table class="table-striped container text-center">
+  <thead>
+    <tr>
+      <th scope="col">Fecha </th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Duracion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @breastfeedings.each do |breastfeeding| %>
         <tr>
-            <th>Fecha</th>
-            <th>Bebe</th>
-            <th>Cantidad</th>
-            <th>Duracionn</th>
-            <th colspan="3"></th>
+            <th scope="row"><%= breastfeeding.date %></th>
+            <th scope="row"><%= breastfeeding.quantity %></th>
+            <th scope="row"><%= breastfeeding.length %></th>
+            
         </tr>
-    </thead>
-    <tbody>
-        <% @breastfeedings.each do |breastfeeding| %>
-            <tr>
-                <td><%= breastfeeding.date %></td>
-                <td><%= breastfeeding.baby %></td>
-                <td><%= breastfeeding.quantity %></td>
-                <td><%= breastfeeding.length %></td>
-                <td><%= link_to  "Mostrar", baby_breastfeeding_path(@baby, breastfeeding) %></td>
-                <td><%= link_to  "Editar", edit_baby_breastfeeding_path(@baby, breastfeeding) %></td>
-            </tr>
-        <% end %>
-    </tbody>
+     <% end %>
 </table>
-                <td><%= link_to  "Nuevo", new_baby_breastfeeding_path(@baby) %></td>
+            
+            
+
+
