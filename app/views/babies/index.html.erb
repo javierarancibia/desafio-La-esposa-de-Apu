@@ -1,19 +1,31 @@
 
 
 <p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <h1>Los Octillizos de la familia Nahasapeemapetilon</h1>
 
-<h1>Los Octillizos de la familia Nahasapeemapetilon</h1>
+  <div class="card-deck mt-5">
+    <% @babies.each do |baby| %>
+      <div class="card ">
+        <img class="img-fluid"><td><%= image_tag baby.image %></td>
+        <div class="card-body">
+          <h5 class="card-title"></h5><h2><%= baby.name %></h5>
 
-<div class="card-deck mt-5">
-        <% @babies.each do |baby| %>
-  <div class="card">
-    <img ><td><%= image_tag baby.image %></td>
-    <div class="card-body">
-      <h5 class="card-title"></h5><h2><%= baby.name %></h2>
-      <p class="card-text"><small class="text-muted"></small></p><td><%= link_to  "Mostrar", baby_breastfeedings_path(baby.id) %></td>
-    </div>
+              <% total = 0 %>
+              <% baby.breastfeedings.each do |feed| %>
+                <% total += feed.quantity %>
+              <% end %>
+               <span>El bebe ha tomado un total de:</span><%= total %><span>ml</span>
+           
+          <p class="card-text"><small class="text-muted"></small></p><td><%= link_to  "Mostrar", baby_breastfeedings_path(baby.id) %></td>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <% end %>
 </div>
+            
+
+
+
 
 

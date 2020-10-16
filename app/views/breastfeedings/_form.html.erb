@@ -1,41 +1,42 @@
-<%= form_with(model: [@baby, breastfeeding], local: true) do |form| %>
-  <% if breastfeeding.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(breastfeeding.errors.count, "error") %>No se pudo guardar tu sesion de breastfeeding</h2>
+<div class="container">
 
-      <ul>
-      <% breastfeeding.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+
+  <%= form_with(model: [@baby, breastfeeding], local: true) do |form| %>
+    <% if breastfeeding.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(breastfeeding.errors.count, "error") %>No se pudo guardar tu sesion de breastfeeding</h2>
+
+        <ul>
+        <% breastfeeding.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <div class="form-group">
+      <div class="field">
+        <%= form.label :fecha %>
+        <%= form.date_field :date %>
+      </div>
+
+      <div class="field">
+        <%= form.label :cantidad_en_ml %>
+        <%= form.number_field :quantity %>
+      </div>
+
+      <div class="field">
+        <%= form.label :duracion_en_minutos %>
+        <%= form.number_field :length %>
+      </div>
+
+
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
   <% end %>
+</div>
 
-  <div class="field">
-    <%= form.label :fecha %>
-    <%= form.date_field :date %>
-  </div>
 
-  <div class="field">
-    <%= form.label :cantidad_en_ml %>
-    <%= form.number_field :quantity %>
-  </div>
 
-  <div class="field">
-    <%= form.label :duracion_en_minutos %>
-    <%= form.number_field :length %>
-  </div>
-
-  <%
-=begin%>
- <div class="field">
-    <%= form.label :id_del_bebe %>
-    <%= form.select :baby_id, @babies.map{ |baby| [baby.name, baby.id] }, prompt: "Seleccione a un bebe.." %>
-  </div> 
-<%
-=end%>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

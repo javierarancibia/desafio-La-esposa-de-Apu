@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-
 <div>
     <div class="row">
         <div class="col-md-8 offset-md-2">
@@ -9,22 +8,53 @@
                 <h1 class="display-4">Archivo de Alimentacion</h1><td><h2><%= @baby.name %></td></h2><td><%= image_tag @baby.image %></td>
                 <hr class="my-4">
                 <p>Catastro de alimentacion de cada niño</p>
-                <%= link_to  "Nuevo", new_baby_breastfeeding_path(@baby) %><br>
+                <%= link_to  "Nuevo registro", new_baby_breastfeeding_path(@baby) %><br>
                 <%= link_to  "Index de los bebes", babies_path %>
             </div>
         </div>
     </div>
 </div>
-            
 
+<h2 style="text-align:center;"> Resultados de Hoy</h2>
 
+<table class="table-striped container text-center">
+  <thead>
+    <tr>
+      <th scope="col">Resultados de Hoy</th>
+      <br>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Duracion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% counter = 0 %>
+    <% total_quantity = 0 %>
+    <% total_length = 0 %>
 
+    <% @today.each do |breastfeeding| %>
+        <tr>
+            <th scope="row"><%= breastfeeding.date %></th>
+            <th scope="row"><%= breastfeeding.quantity %></th>
+            <th scope="row"><%= breastfeeding.length %></th>
+            <% total_quantity += breastfeeding.quantity %>
+            <% total_length += breastfeeding.length %>
+            <% counter += 1 %>
+        </tr>
+     <% end %>
+</table>
+<br>
+            <h4 style="text-align:center;">Cantidad de veces que ha tomado hoy: <%= counter %></h4>
+            <h4 style="text-align:center;">Cantidad total en ml que ha tomado hoy: <%= total_quantity %> ml </h4>
+            <h4 style="text-align:center;">Tiempo total en minutos que ha tomado hoy: <%= total_length %> minutos </h4>
 
+            <% @breastfeedings_last.each do |b| %>
+              <h4 style="text-align:center;">La ultima fecha en que se alimento el bebe es: <%= b.date %> </h4>
+            <% end %>
 
+<br>
+<br>
 
-    
-
-
+<h2 style="text-align:center;"> Resultados Globales</h2>
 
 <table class="table-striped container text-center">
   <thead>
@@ -44,6 +74,16 @@
         </tr>
      <% end %>
 </table>
+
+
+
+
+
+
+    
+
+
+
             
             
 

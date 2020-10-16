@@ -3,7 +3,9 @@ class BreastfeedingsController < ApplicationController
     def index
         @baby = Baby.find params[:baby_id]
 
-        @breastfeedings = @baby.breastfeedings
+        @breastfeedings = @baby.breastfeedings.order("date DESC")
+        @today = @breastfeedings.where(:date => Time.now.midnight)
+        @breastfeedings_last = @baby.breastfeedings.order("date DESC").limit(1)
     end
 
     def new
